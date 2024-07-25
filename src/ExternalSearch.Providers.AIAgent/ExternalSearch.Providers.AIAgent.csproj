@@ -17,8 +17,8 @@
         <PackageReference Include="CluedIn.Rules" />
     </ItemGroup>
     <ItemGroup>
-      <Resource Include="Resources\cluedin.png">
+      <EmbeddedResource Include="Resources\cluedin.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Resource>
+      </EmbeddedResource>
     </ItemGroup>
 </Project>
