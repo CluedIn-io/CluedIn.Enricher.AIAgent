@@ -12,7 +12,7 @@ This repository contains the code and associated tests for enriching with images
 
 ### NuGet Packages
 
-To use the `AI` External Search with the `CluedIn` server you will have to add the CluedIn.Enricher.GoogleImages nuget package to your environment.
+To use the `AI` External Search with the `CluedIn` server you will have to add the CluedIn.Enricher.AI nuget package to your environment.
 
 ### Running Tests
 
