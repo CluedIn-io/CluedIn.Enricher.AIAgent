@@ -15,6 +15,8 @@ using CluedIn.Core.Data.Vocabularies;
 using CluedIn.ExternalSearch.Providers.AIAgent.Models;
 using CluedIn.Core.Processing;
 using CluedIn.Rules.Tokens;
+using CluedIn.Core.Configuration;
+using Castle.Core.Internal;
 
 namespace CluedIn.ExternalSearch.Providers.AIAgent
 {
@@ -114,7 +116,15 @@ namespace CluedIn.ExternalSearch.Providers.AIAgent
 
         private static IEnumerable<IExternalSearchQueryResult> InternalExecuteSearch(IExternalSearchQuery query, string apiKey)
         {
-            var client = new RestClient("host.docker.internal:1234");
+            var url = ConfigurationManagerEx.AppSettings.GetValue("ExternalSearch.AIAgent.url", "");
+            if (url.IsNullOrEmpty())
+            {
+                throw new Exception("Bad configuration");
+            }
+
+            //"http://host.docker.internal:1234"
+
+            var client = new RestClient(url);
 
             if (query.QueryParameters.ContainsKey("companyName"))
             {
@@ -237,8 +247,8 @@ namespace CluedIn.ExternalSearch.Providers.AIAgent
             metadata.OriginEntityCode = code;
             metadata.Codes.Add(code);
             metadata.Codes.Add(request.EntityMetaData.OriginEntityCode);
-
-            metadata.Properties[request.QueryParameters["returnKey"].FirstOrDefault()] = resultItem.Data.choices.First().message.content;
+            
+            metadata.Properties[request.Queries[0].QueryKey.Split(";")[1].Split(":")[1]] = resultItem.Data.choices.First().message.content;
         }
 
         public IEnumerable<EntityType> Accepts(IDictionary<string, object> config, IProvider provider)
