@@ -4,6 +4,6 @@
     <PackageReference Include="CluedIn.Testing.Base" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\src\ExternalSearch.Providers.GoogleImages\ExternalSearch.Providers.AIAgent.csproj" />
+    <ProjectReference Include="..\..\..\src\ExternalSearch.Providers.AIAgent\ExternalSearch.Providers.AIAgent.csproj" />
   </ItemGroup>
 </Project>
