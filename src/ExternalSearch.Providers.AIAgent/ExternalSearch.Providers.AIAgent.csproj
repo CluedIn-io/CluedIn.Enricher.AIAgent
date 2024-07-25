@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <LangVersion>latest</LangVersion>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <LangVersion>latest</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <None Remove="Resources\cluedin.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="CluedIn.ExternalSearch" />
+        <PackageReference Include="CluedIn.Crawling" />
+        <PackageReference Include="CluedIn.Core" />
+        <PackageReference Include="CluedIn.Rules" />
+    </ItemGroup>
+    <ItemGroup>
+      <Resource Include="Resources\cluedin.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+    </ItemGroup>
+</Project>
